@@ -1,0 +1,12 @@
+C:\Users\Thuc\Desktop\Projects\QuanLyQuanCafe\QuanLyQuanCafe\bin\Debug\QuanLyQuanCafe.exe.config
+C:\Users\Thuc\Desktop\Projects\QuanLyQuanCafe\QuanLyQuanCafe\bin\Debug\QuanLyQuanCafe.exe
+C:\Users\Thuc\Desktop\Projects\QuanLyQuanCafe\QuanLyQuanCafe\bin\Debug\QuanLyQuanCafe.pdb
+C:\Users\Thuc\Desktop\Projects\QuanLyQuanCafe\QuanLyQuanCafe\obj\Debug\QuanLyQuanCafe.csprojResolveAssemblyReference.cache
+C:\Users\Thuc\Desktop\Projects\QuanLyQuanCafe\QuanLyQuanCafe\obj\Debug\QuanLyQuanCafe.Properties.Resources.resources
+C:\Users\Thuc\Desktop\Projects\QuanLyQuanCafe\QuanLyQuanCafe\obj\Debug\QuanLyQuanCafe.csproj.GenerateResource.Cache
+C:\Users\Thuc\Desktop\Projects\QuanLyQuanCafe\QuanLyQuanCafe\obj\Debug\QuanLyQuanCafe.exe
+C:\Users\Thuc\Desktop\Projects\QuanLyQuanCafe\QuanLyQuanCafe\obj\Debug\QuanLyQuanCafe.pdb
+C:\Users\Thuc\Desktop\Projects\QuanLyQuanCafe\QuanLyQuanCafe\obj\Debug\QuanLyQuanCafe.FormLogin.resources
+C:\Users\Thuc\Desktop\Projects\QuanLyQuanCafe\QuanLyQuanCafe\obj\Debug\QuanLyQuanCafe.TableManager.resources
+C:\Users\Thuc\Desktop\Projects\QuanLyQuanCafe\QuanLyQuanCafe\obj\Debug\QuanLyQuanCafe.AccountProfile.resources
+C:\Users\Thuc\Desktop\Projects\QuanLyQuanCafe\QuanLyQuanCafe\obj\Debug\QuanLyQuanCafe.FormAdmin.resources
