@@ -25,16 +25,17 @@ namespace QuanLyQuanCafe
             string query = "SELECT * FROM FOOD";
 
 
-            dataGridViewFood.DataSource = DataProvider.Instance.ExcuteQuery(query);
+            dataGridViewFood.DataSource = DataProvider.Instance.ExcuteQuery(query, new object[] { "staff" });
         }
 
         void LoadAccountList()
         {
+
             string query = "EXEC dbo.USP_GetAccountByUserName @username";
 
+            DataProvider provider = new DataProvider();
 
-            dataGridViewAccount.DataSource = DataProvider.Instance.ExcuteQuery(query, new object[]{"staff"});
-
+            dataGridViewAccount.DataSource = provider.ExecuteQuery(query, new object[]{"staff"});
         }
 
 
