@@ -17,15 +17,15 @@ namespace QuanLyQuanCafe
         public FormAdmin()
         {
             InitializeComponent();
-            LoadAccountList();
+            //LoadAccountList();
         }
 
-        void LoadFoodList()
+        /*void LoadFoodList()
         {
             string query = "SELECT * FROM FOOD";
 
 
-            dataGridViewFood.DataSource = DataProvider.Instance.ExcuteQuery(query, new object[] { "staff" });
+            dataGridViewFood.DataSource = DataProvider.Instance.ExecuteQuery(query);
         }
 
         void LoadAccountList()
@@ -33,10 +33,10 @@ namespace QuanLyQuanCafe
 
             string query = "EXEC dbo.USP_GetAccountByUserName @username";
 
-            DataProvider provider = new DataProvider();
+            //DataProvider provider = new DataProvider();
 
-            dataGridViewAccount.DataSource = provider.ExecuteQuery(query, new object[]{"staff"});
-        }
+            dataGridViewAccount.DataSource = DataProvider.Instance.ExecuteQuery(query, new object[]{"staff"});
+        }*/
 
 
         private void FormAdmin_Load(object sender, EventArgs e)
