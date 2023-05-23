@@ -55,6 +55,7 @@
             // 
             // buttonExit
             // 
+            this.buttonExit.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.buttonExit.Font = new System.Drawing.Font("Arial Narrow", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonExit.Location = new System.Drawing.Point(532, 179);
             this.buttonExit.Name = "buttonExit";
@@ -91,6 +92,7 @@
             this.textBoxPassword.Name = "textBoxPassword";
             this.textBoxPassword.Size = new System.Drawing.Size(420, 22);
             this.textBoxPassword.TabIndex = 1;
+            this.textBoxPassword.Text = "1";
             this.textBoxPassword.UseSystemPasswordChar = true;
             // 
             // label2
@@ -119,6 +121,7 @@
             this.textUserName.Name = "textUserName";
             this.textUserName.Size = new System.Drawing.Size(420, 22);
             this.textUserName.TabIndex = 1;
+            this.textUserName.Text = "k9";
             this.textUserName.TextChanged += new System.EventHandler(this.textUserName_TextChanged);
             // 
             // label1
