@@ -51,6 +51,7 @@
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.txbTotalPrice = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
@@ -102,6 +103,7 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.txbTotalPrice);
             this.panel3.Controls.Add(this.cbSwitchTable);
             this.panel3.Controls.Add(this.buttonSwitchTable);
             this.panel3.Controls.Add(this.numericUpDown2);
@@ -131,7 +133,7 @@
             // 
             // numericUpDown2
             // 
-            this.numericUpDown2.Location = new System.Drawing.Point(266, 46);
+            this.numericUpDown2.Location = new System.Drawing.Point(167, 46);
             this.numericUpDown2.Name = "numericUpDown2";
             this.numericUpDown2.Size = new System.Drawing.Size(115, 22);
             this.numericUpDown2.TabIndex = 5;
@@ -139,7 +141,7 @@
             // 
             // buttonDisCount
             // 
-            this.buttonDisCount.Location = new System.Drawing.Point(266, 6);
+            this.buttonDisCount.Location = new System.Drawing.Point(167, 6);
             this.buttonDisCount.Name = "buttonDisCount";
             this.buttonDisCount.Size = new System.Drawing.Size(115, 34);
             this.buttonDisCount.TabIndex = 4;
@@ -233,6 +235,7 @@
             this.columnHeader3,
             this.columnHeader4});
             this.lsvBill.GridLines = true;
+            this.lsvBill.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.lsvBill.Location = new System.Drawing.Point(0, 3);
             this.lsvBill.Name = "lsvBill";
             this.lsvBill.Size = new System.Drawing.Size(632, 489);
@@ -244,12 +247,12 @@
             // columnHeader1
             // 
             this.columnHeader1.Text = "Tên món";
-            this.columnHeader1.Width = 306;
+            this.columnHeader1.Width = 200;
             // 
             // columnHeader2
             // 
             this.columnHeader2.Text = "Số lượng";
-            this.columnHeader2.Width = 98;
+            this.columnHeader2.Width = 57;
             // 
             // columnHeader3
             // 
@@ -260,6 +263,17 @@
             // 
             this.columnHeader4.Text = "Thành tiền";
             this.columnHeader4.Width = 117;
+            // 
+            // txbTotalPrice
+            // 
+            this.txbTotalPrice.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txbTotalPrice.Location = new System.Drawing.Point(309, 28);
+            this.txbTotalPrice.Name = "txbTotalPrice";
+            this.txbTotalPrice.ReadOnly = true;
+            this.txbTotalPrice.Size = new System.Drawing.Size(179, 28);
+            this.txbTotalPrice.TabIndex = 8;
+            this.txbTotalPrice.Text = "0";
+            this.txbTotalPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // TableManager
             // 
@@ -279,6 +293,7 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             this.panel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
@@ -313,5 +328,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader4;
+        private System.Windows.Forms.TextBox txbTotalPrice;
     }
 }
