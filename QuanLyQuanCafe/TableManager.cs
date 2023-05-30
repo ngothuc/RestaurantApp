@@ -12,8 +12,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-
-
 namespace QuanLyQuanCafe
 {
     public partial class TableManager : Form
@@ -21,10 +19,29 @@ namespace QuanLyQuanCafe
         public TableManager()
         {
             InitializeComponent();
+
+
             LoadTable();
+            LoadCategory();
         }
 
         #region Method
+
+        void LoadCategory()
+        {
+            List<Category> listCategory = CategoryDAO.Instance.GetListCategory();
+            cbCategory.DataSource = listCategory;
+            cbCategory.DisplayMember = "Name";
+        }
+
+        void LoadFoodListByCategoryID(int id)
+        {
+            List<Food> listFood = FoodDAO.Instance.GetFoodByCategoryID(id);
+            cbFood.DataSource = listFood;
+            cbFood.DisplayMember = "Name";
+        }
+
+
 
         void LoadTable()
         {
@@ -85,8 +102,7 @@ namespace QuanLyQuanCafe
 
         private void btn_Click(object sender, EventArgs e)
         {
-            int tableID = ((sender as Button).Tag as Table).ID;
-            ShowBill(tableID);
+
         }
 
         private void thôngTinCáNhânToolStripMenuItem_Click(object sender, EventArgs e)
@@ -116,6 +132,22 @@ namespace QuanLyQuanCafe
         private void lsvBill_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void cbCategory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int id = 0;
+
+
+            ComboBox cb = sender as ComboBox;
+
+            if (cb.SelectedItem == null)
+                return;
+
+            Category selected = cb.SelectedItem as Category;
+            id = selected.ID;
+
+            LoadFoodListByCategoryID(id);
         }
     }
 }
