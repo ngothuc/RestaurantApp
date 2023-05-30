@@ -50,6 +50,7 @@
     <Compile Include="AccountProfile.Designer.cs">
       <DependentUpon>AccountProfile.cs</DependentUpon>
     </Compile>
+    <Compile Include="cbFood.cs" />
     <Compile Include="DAO\AccountDAO.cs" />
     <Compile Include="DAO\BillDAO.cs" />
     <Compile Include="DAO\BillInfoDAO.cs" />
