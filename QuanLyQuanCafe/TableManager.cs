@@ -170,6 +170,9 @@ namespace QuanLyQuanCafe
                 BillInfoDAO.Instance.InsertBillInfo(idBill, foodID, count);
             }
 
+
+
+
             ShowBill(table.ID);
         }
     }
