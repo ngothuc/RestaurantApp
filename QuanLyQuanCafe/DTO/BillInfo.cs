@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 
 namespace QuanLyQuanCafe.DTO
 {
+
+
     public class BillInfo
     {
 
