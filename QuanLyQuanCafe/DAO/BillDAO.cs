@@ -19,8 +19,6 @@ namespace QuanLyQuanCafe.DAO
             private set { BillDAO.instance = value; }
         }
 
-
-
         private BillDAO() { }
         /// <summary>
         /// Thành công: bill ID
