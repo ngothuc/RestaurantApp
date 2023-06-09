@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace QuanLyQuanCafe.DAO
 {
+
     public class BillDAO
     {
         private static BillDAO instance;
