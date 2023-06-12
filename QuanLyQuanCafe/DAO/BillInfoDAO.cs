@@ -32,8 +32,6 @@ namespace QuanLyQuanCafe.DAO
                  listBillInfo.Add(info);
              }
 
-
-
              return listBillInfo;
         }
 

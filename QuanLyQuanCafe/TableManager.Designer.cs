@@ -37,7 +37,7 @@
             this.txbTotalPrice = new System.Windows.Forms.TextBox();
             this.cbSwitchTable = new System.Windows.Forms.ComboBox();
             this.buttonSwitchTable = new System.Windows.Forms.Button();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.nmDisCount = new System.Windows.Forms.NumericUpDown();
             this.buttonDisCount = new System.Windows.Forms.Button();
             this.buttonCheckOut = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -54,7 +54,7 @@
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.menuStrip1.SuspendLayout();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nmDisCount)).BeginInit();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmFoodCount)).BeginInit();
             this.panelBill.SuspendLayout();
@@ -106,7 +106,7 @@
             this.panel3.Controls.Add(this.txbTotalPrice);
             this.panel3.Controls.Add(this.cbSwitchTable);
             this.panel3.Controls.Add(this.buttonSwitchTable);
-            this.panel3.Controls.Add(this.numericUpDown2);
+            this.panel3.Controls.Add(this.nmDisCount);
             this.panel3.Controls.Add(this.buttonDisCount);
             this.panel3.Controls.Add(this.buttonCheckOut);
             this.panel3.Location = new System.Drawing.Point(716, 637);
@@ -141,14 +141,15 @@
             this.buttonSwitchTable.TabIndex = 6;
             this.buttonSwitchTable.Text = "Chuyển bàn";
             this.buttonSwitchTable.UseVisualStyleBackColor = true;
+            this.buttonSwitchTable.Click += new System.EventHandler(this.buttonSwitchTable_Click);
             // 
-            // numericUpDown2
+            // nmDisCount
             // 
-            this.numericUpDown2.Location = new System.Drawing.Point(167, 46);
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(115, 22);
-            this.numericUpDown2.TabIndex = 5;
-            this.numericUpDown2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.nmDisCount.Location = new System.Drawing.Point(167, 46);
+            this.nmDisCount.Name = "nmDisCount";
+            this.nmDisCount.Size = new System.Drawing.Size(115, 22);
+            this.nmDisCount.TabIndex = 5;
+            this.nmDisCount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // buttonDisCount
             // 
@@ -297,7 +298,7 @@
             this.menuStrip1.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nmDisCount)).EndInit();
             this.panel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.nmFoodCount)).EndInit();
             this.panelBill.ResumeLayout(false);
@@ -316,7 +317,7 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.ComboBox cbSwitchTable;
         private System.Windows.Forms.Button buttonSwitchTable;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
+        private System.Windows.Forms.NumericUpDown nmDisCount;
         private System.Windows.Forms.Button buttonDisCount;
         private System.Windows.Forms.Button buttonCheckOut;
         private System.Windows.Forms.Panel panel4;
