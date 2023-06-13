@@ -18,6 +18,7 @@ namespace QuanLyQuanCafe.DAO
             set { BillInfoDAO.instance = value; }
         }
 
+
         private BillInfoDAO() { }
 
         public List<BillInfo> GetListBillInfo(int id)
