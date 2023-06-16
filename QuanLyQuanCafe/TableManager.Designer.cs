@@ -117,7 +117,7 @@
             // txbTotalPrice
             // 
             this.txbTotalPrice.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbTotalPrice.Location = new System.Drawing.Point(309, 28);
+            this.txbTotalPrice.Location = new System.Drawing.Point(320, 24);
             this.txbTotalPrice.Name = "txbTotalPrice";
             this.txbTotalPrice.ReadOnly = true;
             this.txbTotalPrice.Size = new System.Drawing.Size(179, 28);
@@ -130,16 +130,16 @@
             this.cbSwitchTable.FormattingEnabled = true;
             this.cbSwitchTable.Location = new System.Drawing.Point(3, 44);
             this.cbSwitchTable.Name = "cbSwitchTable";
-            this.cbSwitchTable.Size = new System.Drawing.Size(115, 24);
+            this.cbSwitchTable.Size = new System.Drawing.Size(158, 24);
             this.cbSwitchTable.TabIndex = 7;
             // 
             // buttonSwitchTable
             // 
             this.buttonSwitchTable.Location = new System.Drawing.Point(3, 6);
             this.buttonSwitchTable.Name = "buttonSwitchTable";
-            this.buttonSwitchTable.Size = new System.Drawing.Size(115, 34);
+            this.buttonSwitchTable.Size = new System.Drawing.Size(158, 34);
             this.buttonSwitchTable.TabIndex = 6;
-            this.buttonSwitchTable.Text = "Chuyển bàn";
+            this.buttonSwitchTable.Text = "Chuyển bàn\r\n";
             this.buttonSwitchTable.UseVisualStyleBackColor = true;
             this.buttonSwitchTable.Click += new System.EventHandler(this.buttonSwitchTable_Click);
             // 
@@ -147,7 +147,7 @@
             // 
             this.nmDisCount.Location = new System.Drawing.Point(167, 46);
             this.nmDisCount.Name = "nmDisCount";
-            this.nmDisCount.Size = new System.Drawing.Size(115, 22);
+            this.nmDisCount.Size = new System.Drawing.Size(136, 22);
             this.nmDisCount.TabIndex = 5;
             this.nmDisCount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -155,7 +155,7 @@
             // 
             this.buttonDisCount.Location = new System.Drawing.Point(167, 6);
             this.buttonDisCount.Name = "buttonDisCount";
-            this.buttonDisCount.Size = new System.Drawing.Size(115, 34);
+            this.buttonDisCount.Size = new System.Drawing.Size(136, 34);
             this.buttonDisCount.TabIndex = 4;
             this.buttonDisCount.Text = "Giảm giá";
             this.buttonDisCount.UseVisualStyleBackColor = true;
