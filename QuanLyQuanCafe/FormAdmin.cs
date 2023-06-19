@@ -18,6 +18,8 @@ namespace QuanLyQuanCafe
         {
             InitializeComponent();
             //LoadAccountList();
+            LoadDateTimePickerBill();
+            LoadListBillByDate(dateTimePickerFromDate.Value, dateTimePickerDateAfter.Value);
         }
 
         /*void LoadFoodList()
@@ -44,10 +46,28 @@ namespace QuanLyQuanCafe
             
         }
 
+        #region methods
+        void LoadDateTimePickerBill()
+        {
+            DateTime today = DateTime.Now;
+            dateTimePickerFromDate.Value = new DateTime(today.Year, today.Month, 1);
+            dateTimePickerDateAfter.Value = dateTimePickerFromDate.Value.AddMonths(1).AddDays(-1);
+        }
+
+        void LoadListBillByDate(DateTime checkIn, DateTime checkOut)
+        {
+           dataGridViewBill.DataSource = BillDAO.Instance.GetBillListByDate(checkIn, checkOut);
+        }
+        #endregion
+
+        #region events
         private void buttonBill_Click(object sender, EventArgs e)
         {
-
+            LoadListBillByDate(dateTimePickerFromDate.Value, dateTimePickerDateAfter.Value);
         }
+
+        #endregion
+        
 
         private void tabControlAdmin_SelectedIndexChanged(object sender, EventArgs e)
         {

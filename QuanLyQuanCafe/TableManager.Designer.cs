@@ -139,7 +139,7 @@
             this.buttonSwitchTable.Name = "buttonSwitchTable";
             this.buttonSwitchTable.Size = new System.Drawing.Size(158, 34);
             this.buttonSwitchTable.TabIndex = 6;
-            this.buttonSwitchTable.Text = "Chuyển bàn\r\n";
+            this.buttonSwitchTable.Text = "Chuyển bàn";
             this.buttonSwitchTable.UseVisualStyleBackColor = true;
             this.buttonSwitchTable.Click += new System.EventHandler(this.buttonSwitchTable_Click);
             // 
