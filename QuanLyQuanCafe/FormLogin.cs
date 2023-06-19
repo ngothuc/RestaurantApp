@@ -1,4 +1,5 @@
 ﻿using QuanLyQuanCafe.DAO;
+using QuanLyQuanCafe.DTO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -29,7 +30,8 @@ namespace QuanLyQuanCafe
             string PassWord = textBoxPassword.Text;
             if (Login(UserName,PassWord))
             {
-                TableManager f = new TableManager();
+                Account loginAccount = AccountDAO.Instance.GetAccountByUserName(UserName);
+                TableManager f = new TableManager(loginAccount);
                 this.Hide();
                 f.ShowDialog();
                 this.Show();

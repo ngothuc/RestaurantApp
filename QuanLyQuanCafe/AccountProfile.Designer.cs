@@ -79,6 +79,7 @@
             this.label1.Size = new System.Drawing.Size(186, 29);
             this.label1.TabIndex = 0;
             this.label1.Text = "Tên đăng nhập";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // panel1
             // 
@@ -202,6 +203,7 @@
             this.buttonUpdate.TabIndex = 6;
             this.buttonUpdate.Text = "Cập nhật";
             this.buttonUpdate.UseVisualStyleBackColor = true;
+            this.buttonUpdate.Click += new System.EventHandler(this.buttonUpdate_Click);
             // 
             // buttonCancel
             // 

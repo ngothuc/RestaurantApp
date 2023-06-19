@@ -7,5 +7,6 @@ namespace QuanLyQuanCafe.DAO
 {
     class datatable
     {
+        public static IEnumerable<System.Data.DataRow> Rows { get; set; }
     }
 }
