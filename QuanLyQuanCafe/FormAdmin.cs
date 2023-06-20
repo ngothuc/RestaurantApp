@@ -9,18 +9,24 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using QuanLyQuanCafe.DAO;
+using QuanLyQuanCafe.DTO;
 
 namespace QuanLyQuanCafe
 {
     public partial class FormAdmin : Form
     {
+        BindingSource foodList = new BindingSource();
+
         public FormAdmin()
         {
             InitializeComponent();
             //LoadAccountList();
+            dataGridViewFood.DataSource = foodList;
             LoadDateTimePickerBill();
             LoadListBillByDate(dateTimePickerFromDate.Value, dateTimePickerDateAfter.Value);
             LoadListFood();
+            LoadCategoryIntoComboBox(comboBoxCategory);
+            AddFoodBinding();
         }
         /*void LoadFoodList()
         {
@@ -59,9 +65,23 @@ namespace QuanLyQuanCafe
            dataGridViewBill.DataSource = BillDAO.Instance.GetBillListByDate(checkIn, checkOut);
         }
 
+        void AddFoodBinding()
+        {
+            textBoxFoodName.DataBindings.Add(new Binding("Text", dataGridViewFood.DataSource, "Name"));
+            textBoxFoodID.DataBindings.Add(new Binding("Text", dataGridViewFood.DataSource, "ID"));
+            numericUpDownPrice.DataBindings.Add(new Binding("Value", dataGridViewFood.DataSource, "Price"));
+        }
+
+        void LoadCategoryIntoComboBox(ComboBox cb)
+        {
+            cb.DataSource = CategoryDAO.Instance.GetListCategory();
+            cb.DisplayMember = "Name";
+        }
+
+
         void LoadListFood()
         {
-            dataGridViewFood.DataSource = FoodDAO.Instance.GetListFood();
+            foodList.DataSource = FoodDAO.Instance.GetListFood();
         }
 
 
@@ -71,6 +91,11 @@ namespace QuanLyQuanCafe
         private void buttonBill_Click(object sender, EventArgs e)
         {
             LoadListBillByDate(dateTimePickerFromDate.Value, dateTimePickerDateAfter.Value);
+        }
+
+        private void buttonViewFood_Click(object sender, EventArgs e)
+        {
+            LoadListFood();
         }
 
         #endregion
@@ -96,9 +121,34 @@ namespace QuanLyQuanCafe
 
         }
 
-        private void buttonViewFood_Click(object sender, EventArgs e)
+        private void textBoxFoodID_TextChanged(object sender, EventArgs e)
         {
-            LoadListFood();
+            if (dataGridViewFood.SelectedCells.Count > 0)
+            {
+                int id = (int)dataGridViewFood.SelectedCells[0].OwningRow.Cells["CategoryID"].Value;
+
+                
+                Category category = CategoryDAO.Instance.GetCategoryByID(id);
+
+                comboBoxCategory.SelectedItem = category;
+
+                int index = -1;
+                int i = 0;
+                foreach (Category item in comboBoxCategory.Items)
+                {
+                    if (item.ID == category.ID)
+                    {
+                        index = i;
+                        break;
+                    }
+                    i++;
+                }
+
+                comboBoxCategory.SelectedIndex = index;
+                
+            }
         }
+
+      
     }
 }

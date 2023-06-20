@@ -95,7 +95,7 @@
             this.textBoxFoodName = new System.Windows.Forms.TextBox();
             this.labelFoodName = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.textFoodID = new System.Windows.Forms.TextBox();
+            this.textBoxFoodID = new System.Windows.Forms.TextBox();
             this.labelID = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.textBoxSearchFood = new System.Windows.Forms.TextBox();
@@ -787,21 +787,22 @@
             // 
             // panel7
             // 
-            this.panel7.Controls.Add(this.textFoodID);
+            this.panel7.Controls.Add(this.textBoxFoodID);
             this.panel7.Controls.Add(this.labelID);
             this.panel7.Location = new System.Drawing.Point(11, 13);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(510, 75);
             this.panel7.TabIndex = 1;
             // 
-            // textFoodID
+            // textBoxFoodID
             // 
-            this.textFoodID.BackColor = System.Drawing.SystemColors.Window;
-            this.textFoodID.Location = new System.Drawing.Point(138, 26);
-            this.textFoodID.Name = "textFoodID";
-            this.textFoodID.ReadOnly = true;
-            this.textFoodID.Size = new System.Drawing.Size(369, 22);
-            this.textFoodID.TabIndex = 1;
+            this.textBoxFoodID.BackColor = System.Drawing.SystemColors.Window;
+            this.textBoxFoodID.Location = new System.Drawing.Point(138, 26);
+            this.textBoxFoodID.Name = "textBoxFoodID";
+            this.textBoxFoodID.ReadOnly = true;
+            this.textBoxFoodID.Size = new System.Drawing.Size(369, 22);
+            this.textBoxFoodID.TabIndex = 1;
+            this.textBoxFoodID.TextChanged += new System.EventHandler(this.textBoxFoodID_TextChanged);
             // 
             // labelID
             // 
@@ -1099,7 +1100,7 @@
         private System.Windows.Forms.TextBox textBoxFoodName;
         private System.Windows.Forms.Label labelFoodName;
         private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.TextBox textFoodID;
+        private System.Windows.Forms.TextBox textBoxFoodID;
         private System.Windows.Forms.Label labelID;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.TextBox textBoxSearchFood;
