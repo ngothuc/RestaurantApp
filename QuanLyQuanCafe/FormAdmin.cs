@@ -20,8 +20,8 @@ namespace QuanLyQuanCafe
             //LoadAccountList();
             LoadDateTimePickerBill();
             LoadListBillByDate(dateTimePickerFromDate.Value, dateTimePickerDateAfter.Value);
+            LoadListFood();
         }
-
         /*void LoadFoodList()
         {
             string query = "SELECT * FROM FOOD";
@@ -58,6 +58,13 @@ namespace QuanLyQuanCafe
         {
            dataGridViewBill.DataSource = BillDAO.Instance.GetBillListByDate(checkIn, checkOut);
         }
+
+        void LoadListFood()
+        {
+            dataGridViewFood.DataSource = FoodDAO.Instance.GetListFood();
+        }
+
+
         #endregion
 
         #region events
@@ -87,6 +94,11 @@ namespace QuanLyQuanCafe
         private void label5_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void buttonViewFood_Click(object sender, EventArgs e)
+        {
+            LoadListFood();
         }
     }
 }

@@ -875,6 +875,7 @@
             this.buttonViewFood.TabIndex = 3;
             this.buttonViewFood.Text = "Xem";
             this.buttonViewFood.UseVisualStyleBackColor = true;
+            this.buttonViewFood.Click += new System.EventHandler(this.buttonViewFood_Click);
             // 
             // buttonEditFood
             // 
