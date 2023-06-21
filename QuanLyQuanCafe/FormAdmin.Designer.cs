@@ -771,7 +771,6 @@
             this.textBoxFoodName.BackColor = System.Drawing.SystemColors.Window;
             this.textBoxFoodName.Location = new System.Drawing.Point(141, 26);
             this.textBoxFoodName.Name = "textBoxFoodName";
-            this.textBoxFoodName.ReadOnly = true;
             this.textBoxFoodName.Size = new System.Drawing.Size(366, 22);
             this.textBoxFoodName.TabIndex = 1;
             // 
@@ -886,6 +885,7 @@
             this.buttonEditFood.TabIndex = 2;
             this.buttonEditFood.Text = "Sửa";
             this.buttonEditFood.UseVisualStyleBackColor = true;
+            this.buttonEditFood.Click += new System.EventHandler(this.buttonEditFood_Click);
             // 
             // buttonDeleteFood
             // 
@@ -895,6 +895,7 @@
             this.buttonDeleteFood.TabIndex = 1;
             this.buttonDeleteFood.Text = "Xóa";
             this.buttonDeleteFood.UseVisualStyleBackColor = true;
+            this.buttonDeleteFood.Click += new System.EventHandler(this.buttonDeleteFood_Click);
             // 
             // buttonAddFood
             // 
@@ -904,6 +905,7 @@
             this.buttonAddFood.TabIndex = 0;
             this.buttonAddFood.Text = "Thêm";
             this.buttonAddFood.UseVisualStyleBackColor = true;
+            this.buttonAddFood.Click += new System.EventHandler(this.buttonAddFood_Click);
             // 
             // tabPageBill
             // 
