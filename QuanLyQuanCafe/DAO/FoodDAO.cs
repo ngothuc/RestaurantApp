@@ -60,6 +60,24 @@ namespace QuanLyQuanCafe.DAO
 
         }
 
+        public List<Food> SearchFoodByName(string name)
+        {
+            List<Food> list = new List<Food>();
+
+
+            string query = string.Format("select * from Food where dbo.fuConvertToUnsign1(Name) like N'%' + dbo.fuConvertToUnsign1(N'{0}') + N'%'", name);
+
+            DataTable data = DataProvider.Instance.ExecuteQuery(query);
+
+            foreach (DataRow item in data.Rows)
+            {
+                Food food = new Food(item);
+                list.Add(food);
+            }
+
+            return list;
+        }
+
         public bool InsertFood(string name, int id, float price)
         {
             string query = string.Format("INSERT INTO Food (Name, IDCategory, Price) VALUES (N'{0}' , {1} , {2})", name, id, price);

@@ -837,6 +837,7 @@
             this.buttonSearchFood.TabIndex = 4;
             this.buttonSearchFood.Text = "Tìm";
             this.buttonSearchFood.UseVisualStyleBackColor = true;
+            this.buttonSearchFood.Click += new System.EventHandler(this.buttonSearchFood_Click);
             // 
             // panel4
             // 

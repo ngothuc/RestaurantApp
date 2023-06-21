@@ -55,6 +55,13 @@ namespace QuanLyQuanCafe
         }
 
         #region methods
+        List<Food> SearchFoodByName(string name)
+        {
+            List<Food> listFood = FoodDAO.Instance.SearchFoodByName(name);
+            
+            return listFood;
+        }
+
         void LoadDateTimePickerBill()
         {
             DateTime today = DateTime.Now;
@@ -90,6 +97,11 @@ namespace QuanLyQuanCafe
         #endregion
 
         #region events
+        private void buttonSearchFood_Click(object sender, EventArgs e)
+        {
+            foodList.DataSource = SearchFoodByName(textBoxSearchFood.Text);
+        }
+
         private void buttonBill_Click(object sender, EventArgs e)
         {
             LoadListBillByDate(dateTimePickerFromDate.Value, dateTimePickerDateAfter.Value);
@@ -121,7 +133,7 @@ namespace QuanLyQuanCafe
             add { updateFood += value; }
             remove { updateFood -= value; }
         }
-
+        
         #endregion
         
 
@@ -147,30 +159,35 @@ namespace QuanLyQuanCafe
 
         private void textBoxFoodID_TextChanged(object sender, EventArgs e)
         {
-            if (dataGridViewFood.SelectedCells.Count > 0)
+            try
             {
-                int id = (int)dataGridViewFood.SelectedCells[0].OwningRow.Cells["CategoryID"].Value;
-
-                
-                Category category = CategoryDAO.Instance.GetCategoryByID(id);
-
-                comboBoxCategory.SelectedItem = category;
-
-                int index = -1;
-                int i = 0;
-                foreach (Category item in comboBoxCategory.Items)
+                if (dataGridViewFood.SelectedCells.Count > 0)
                 {
-                    if (item.ID == category.ID)
-                    {
-                        index = i;
-                        break;
-                    }
-                    i++;
-                }
+                    int id = (int)dataGridViewFood.SelectedCells[0].OwningRow.Cells["CategoryID"].Value;
 
-                comboBoxCategory.SelectedIndex = index;
-                
+
+                    Category category = CategoryDAO.Instance.GetCategoryByID(id);
+
+                    comboBoxCategory.SelectedItem = category;
+
+                    int index = -1;
+                    int i = 0;
+                    foreach (Category item in comboBoxCategory.Items)
+                    {
+                        if (item.ID == category.ID)
+                        {
+                            index = i;
+                            break;
+                        }
+                        i++;
+                    }
+
+                    comboBoxCategory.SelectedIndex = index;
+
+                }
             }
+
+            catch { }
         }
 
         private void buttonAddFood_Click(object sender, EventArgs e)
@@ -229,6 +246,8 @@ namespace QuanLyQuanCafe
                 MessageBox.Show("Có lỗi khi xóa món");
             }
         }
+
+       
         
 
       
