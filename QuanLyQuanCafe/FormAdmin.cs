@@ -28,6 +28,8 @@ namespace QuanLyQuanCafe
             LoadCategoryIntoComboBox(comboBoxCategory);
             AddFoodBinding();
         }
+
+
         /*void LoadFoodList()
         {
             string query = "SELECT * FROM FOOD";
