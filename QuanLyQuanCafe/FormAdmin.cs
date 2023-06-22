@@ -16,17 +16,21 @@ namespace QuanLyQuanCafe
     public partial class FormAdmin : Form
     {
         BindingSource foodList = new BindingSource();
+        BindingSource accountList = new BindingSource();
 
         public FormAdmin()
         {
             InitializeComponent();
             //LoadAccountList();
             dataGridViewFood.DataSource = foodList;
+            dataGridViewAccount.DataSource = accountList;
             LoadDateTimePickerBill();
             LoadListBillByDate(dateTimePickerFromDate.Value, dateTimePickerDateAfter.Value);
             LoadListFood();
+            LoadAccount();
             LoadCategoryIntoComboBox(comboBoxCategory);
             AddFoodBinding();
+            AddAccountBinding();
         }
 
 
@@ -62,6 +66,17 @@ namespace QuanLyQuanCafe
             return listFood;
         }
 
+
+        void AddAccountBinding()
+        {
+            textBoxUserName.DataBindings.Add(new Binding("Text", dataGridViewAccount.DataSource, "UserName", true, DataSourceUpdateMode.Never));
+            textBoxDisplayName.DataBindings.Add(new Binding("Text", dataGridViewAccount.DataSource, "DisplayName", true, DataSourceUpdateMode.Never));
+            textBoxAccountType.DataBindings.Add(new Binding("Text", dataGridViewAccount.DataSource, "Type", true, DataSourceUpdateMode.Never));
+        }
+        void LoadAccount()
+        {
+            accountList.DataSource = AccountDAO.Instance.GetListAccount();
+        }
         void LoadDateTimePickerBill()
         {
             DateTime today = DateTime.Now;
@@ -245,6 +260,11 @@ namespace QuanLyQuanCafe
             {
                 MessageBox.Show("Có lỗi khi xóa món");
             }
+        }
+
+        private void buttonViewAccount_Click(object sender, EventArgs e)
+        {
+            LoadAccount();
         }
 
        

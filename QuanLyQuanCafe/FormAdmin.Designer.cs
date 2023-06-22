@@ -32,7 +32,6 @@
             this.panel21 = new System.Windows.Forms.Panel();
             this.buttonResetPassword = new System.Windows.Forms.Button();
             this.panel25 = new System.Windows.Forms.Panel();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.labelType = new System.Windows.Forms.Label();
             this.panel26 = new System.Windows.Forms.Panel();
             this.textBoxDisplayName = new System.Windows.Forms.TextBox();
@@ -115,6 +114,7 @@
             this.dateTimePickerDateAfter = new System.Windows.Forms.DateTimePicker();
             this.dateTimePickerFromDate = new System.Windows.Forms.DateTimePicker();
             this.tabControlAdmin = new System.Windows.Forms.TabControl();
+            this.textBoxAccountType = new System.Windows.Forms.TextBox();
             this.tabPageAccount.SuspendLayout();
             this.panel21.SuspendLayout();
             this.panel25.SuspendLayout();
@@ -189,20 +189,12 @@
             // 
             // panel25
             // 
-            this.panel25.Controls.Add(this.comboBox1);
+            this.panel25.Controls.Add(this.textBoxAccountType);
             this.panel25.Controls.Add(this.labelType);
             this.panel25.Location = new System.Drawing.Point(8, 175);
             this.panel25.Name = "panel25";
             this.panel25.Size = new System.Drawing.Size(510, 75);
             this.panel25.TabIndex = 3;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(191, 27);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(315, 24);
-            this.comboBox1.TabIndex = 1;
             // 
             // labelType
             // 
@@ -298,6 +290,7 @@
             this.buttonViewAccount.TabIndex = 3;
             this.buttonViewAccount.Text = "Xem";
             this.buttonViewAccount.UseVisualStyleBackColor = true;
+            this.buttonViewAccount.Click += new System.EventHandler(this.buttonViewAccount_Click);
             // 
             // buttonEditAccount
             // 
@@ -987,6 +980,15 @@
             this.tabControlAdmin.TabIndex = 0;
             this.tabControlAdmin.SelectedIndexChanged += new System.EventHandler(this.tabControlAdmin_SelectedIndexChanged);
             // 
+            // textBoxAccountType
+            // 
+            this.textBoxAccountType.BackColor = System.Drawing.SystemColors.Window;
+            this.textBoxAccountType.Location = new System.Drawing.Point(191, 20);
+            this.textBoxAccountType.Name = "textBoxAccountType";
+            this.textBoxAccountType.ReadOnly = true;
+            this.textBoxAccountType.Size = new System.Drawing.Size(316, 22);
+            this.textBoxAccountType.TabIndex = 5;
+            // 
             // FormAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1129,7 +1131,6 @@
         private System.Windows.Forms.Panel panel21;
         private System.Windows.Forms.Button buttonResetPassword;
         private System.Windows.Forms.Panel panel25;
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label labelType;
         private System.Windows.Forms.Panel panel26;
         private System.Windows.Forms.TextBox textBoxDisplayName;
@@ -1143,6 +1144,7 @@
         private System.Windows.Forms.Button buttonEditAccount;
         private System.Windows.Forms.Button buttonDeleteAccount;
         private System.Windows.Forms.Button buttonAddAccount;
+        private System.Windows.Forms.TextBox textBoxAccountType;
 
     }
 }
