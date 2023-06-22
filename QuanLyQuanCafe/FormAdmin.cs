@@ -18,6 +18,8 @@ namespace QuanLyQuanCafe
         BindingSource foodList = new BindingSource();
         BindingSource accountList = new BindingSource();
 
+        public Account loginAccount;
+
         public FormAdmin()
         {
             InitializeComponent();
@@ -71,7 +73,7 @@ namespace QuanLyQuanCafe
         {
             textBoxUserName.DataBindings.Add(new Binding("Text", dataGridViewAccount.DataSource, "UserName", true, DataSourceUpdateMode.Never));
             textBoxDisplayName.DataBindings.Add(new Binding("Text", dataGridViewAccount.DataSource, "DisplayName", true, DataSourceUpdateMode.Never));
-            textBoxAccountType.DataBindings.Add(new Binding("Text", dataGridViewAccount.DataSource, "Type", true, DataSourceUpdateMode.Never));
+            numericUpDownType.DataBindings.Add(new Binding("Value", dataGridViewAccount.DataSource, "Type", true, DataSourceUpdateMode.Never));
         }
         void LoadAccount()
         {
@@ -108,10 +110,97 @@ namespace QuanLyQuanCafe
             foodList.DataSource = FoodDAO.Instance.GetListFood();
         }
 
+        void AddAccount(string userName, string displayName, int type)
+        {
+            if(AccountDAO.Instance.InsertAccount(userName, displayName, type))
+            {
+                MessageBox.Show("Thêm tài khoản thành công");
+            }
+            else
+            {
+                MessageBox.Show("Thêm tài khoản thất bại");
+            }
 
+            LoadAccount();
+        }
+
+        void EditAccount(string userName, string displayName, int type)
+        {
+            if (AccountDAO.Instance.UpdateAccount(userName, displayName, type))
+            {
+                MessageBox.Show("Cập nhật tài khoản thành công");
+            }
+            else
+            {
+                MessageBox.Show("Cập nhật tài khoản thất bại");
+            }
+
+            LoadAccount();
+        }
+
+        void DeleteAccount(string userName)
+        {
+            if(loginAccount.UserName.Equals(userName))
+            {
+                MessageBox.Show("Không thể xóa tài khoản");
+                return;
+            }
+
+            if (AccountDAO.Instance.DeleteAccount(userName))
+            {
+                MessageBox.Show("Xóa tài khoản thành công");
+            }
+            else
+            {
+                MessageBox.Show("Xóa tài khoản thất bại");
+            }
+
+            LoadAccount();
+        }
+
+
+        void ResetPass(string userName)
+        {
+            if (AccountDAO.Instance.ResetPassword(userName))
+            {
+                MessageBox.Show("Đặt lại mật khẩu thành công");
+            }
+            else
+            {
+                MessageBox.Show("Đặt lại mật khẩu thất bại");
+            }
+
+        }
         #endregion
 
         #region events
+        private void buttonViewAccount_Click(object sender, EventArgs e)
+        {
+            LoadAccount();
+        }
+
+        private void buttonEditAccount_Click(object sender, EventArgs e)
+        {
+            string userName = textBoxUserName.Text;
+            string displayName = textBoxDisplayName.Text;
+            int type = (int)numericUpDownType.Value;
+            EditAccount(userName, displayName, type);
+        }
+
+        private void buttonDeleteAccount_Click(object sender, EventArgs e)
+        {
+            string userName = textBoxUserName.Text;
+            DeleteAccount(userName);
+        }
+
+        private void buttonAddAccount_Click(object sender, EventArgs e)
+        {
+            string userName = textBoxUserName.Text;
+            string displayName = textBoxDisplayName.Text;
+            int type = (int)numericUpDownType.Value;
+            AddAccount(userName, displayName, type);
+        }
+
         private void buttonSearchFood_Click(object sender, EventArgs e)
         {
             foodList.DataSource = SearchFoodByName(textBoxSearchFood.Text);
@@ -262,11 +351,13 @@ namespace QuanLyQuanCafe
             }
         }
 
-        private void buttonViewAccount_Click(object sender, EventArgs e)
+        private void buttonResetPassword_Click(object sender, EventArgs e)
         {
-            LoadAccount();
+            string userName = textBoxUserName.Text;
+            ResetPass(userName);
         }
 
+  
        
         
 

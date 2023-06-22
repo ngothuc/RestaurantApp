@@ -114,7 +114,7 @@
             this.dateTimePickerDateAfter = new System.Windows.Forms.DateTimePicker();
             this.dateTimePickerFromDate = new System.Windows.Forms.DateTimePicker();
             this.tabControlAdmin = new System.Windows.Forms.TabControl();
-            this.textBoxAccountType = new System.Windows.Forms.TextBox();
+            this.numericUpDownType = new System.Windows.Forms.NumericUpDown();
             this.tabPageAccount.SuspendLayout();
             this.panel21.SuspendLayout();
             this.panel25.SuspendLayout();
@@ -153,6 +153,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBill)).BeginInit();
             this.panel1.SuspendLayout();
             this.tabControlAdmin.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownType)).BeginInit();
             this.SuspendLayout();
             // 
             // tabPageAccount
@@ -186,10 +187,11 @@
             this.buttonResetPassword.TabIndex = 4;
             this.buttonResetPassword.Text = "Đặt lại mật khẩu";
             this.buttonResetPassword.UseVisualStyleBackColor = true;
+            this.buttonResetPassword.Click += new System.EventHandler(this.buttonResetPassword_Click);
             // 
             // panel25
             // 
-            this.panel25.Controls.Add(this.textBoxAccountType);
+            this.panel25.Controls.Add(this.numericUpDownType);
             this.panel25.Controls.Add(this.labelType);
             this.panel25.Location = new System.Drawing.Point(8, 175);
             this.panel25.Name = "panel25";
@@ -220,7 +222,6 @@
             this.textBoxDisplayName.BackColor = System.Drawing.SystemColors.Window;
             this.textBoxDisplayName.Location = new System.Drawing.Point(191, 26);
             this.textBoxDisplayName.Name = "textBoxDisplayName";
-            this.textBoxDisplayName.ReadOnly = true;
             this.textBoxDisplayName.Size = new System.Drawing.Size(316, 22);
             this.textBoxDisplayName.TabIndex = 1;
             // 
@@ -248,7 +249,6 @@
             this.textBoxUserName.BackColor = System.Drawing.SystemColors.Window;
             this.textBoxUserName.Location = new System.Drawing.Point(188, 26);
             this.textBoxUserName.Name = "textBoxUserName";
-            this.textBoxUserName.ReadOnly = true;
             this.textBoxUserName.Size = new System.Drawing.Size(319, 22);
             this.textBoxUserName.TabIndex = 1;
             // 
@@ -300,6 +300,7 @@
             this.buttonEditAccount.TabIndex = 2;
             this.buttonEditAccount.Text = "Sửa";
             this.buttonEditAccount.UseVisualStyleBackColor = true;
+            this.buttonEditAccount.Click += new System.EventHandler(this.buttonEditAccount_Click);
             // 
             // buttonDeleteAccount
             // 
@@ -309,6 +310,7 @@
             this.buttonDeleteAccount.TabIndex = 1;
             this.buttonDeleteAccount.Text = "Xóa";
             this.buttonDeleteAccount.UseVisualStyleBackColor = true;
+            this.buttonDeleteAccount.Click += new System.EventHandler(this.buttonDeleteAccount_Click);
             // 
             // buttonAddAccount
             // 
@@ -318,6 +320,7 @@
             this.buttonAddAccount.TabIndex = 0;
             this.buttonAddAccount.Text = "Thêm";
             this.buttonAddAccount.UseVisualStyleBackColor = true;
+            this.buttonAddAccount.Click += new System.EventHandler(this.buttonAddAccount_Click);
             // 
             // tabPageTable
             // 
@@ -980,14 +983,17 @@
             this.tabControlAdmin.TabIndex = 0;
             this.tabControlAdmin.SelectedIndexChanged += new System.EventHandler(this.tabControlAdmin_SelectedIndexChanged);
             // 
-            // textBoxAccountType
+            // numericUpDownType
             // 
-            this.textBoxAccountType.BackColor = System.Drawing.SystemColors.Window;
-            this.textBoxAccountType.Location = new System.Drawing.Point(191, 20);
-            this.textBoxAccountType.Name = "textBoxAccountType";
-            this.textBoxAccountType.ReadOnly = true;
-            this.textBoxAccountType.Size = new System.Drawing.Size(316, 22);
-            this.textBoxAccountType.TabIndex = 5;
+            this.numericUpDownType.Location = new System.Drawing.Point(191, 20);
+            this.numericUpDownType.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDownType.Name = "numericUpDownType";
+            this.numericUpDownType.Size = new System.Drawing.Size(78, 22);
+            this.numericUpDownType.TabIndex = 1;
             // 
             // FormAdmin
             // 
@@ -1052,6 +1058,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBill)).EndInit();
             this.panel1.ResumeLayout(false);
             this.tabControlAdmin.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownType)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1144,7 +1151,7 @@
         private System.Windows.Forms.Button buttonEditAccount;
         private System.Windows.Forms.Button buttonDeleteAccount;
         private System.Windows.Forms.Button buttonAddAccount;
-        private System.Windows.Forms.TextBox textBoxAccountType;
+        private System.Windows.Forms.NumericUpDown numericUpDownType;
 
     }
 }
