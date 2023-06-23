@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -21,9 +22,23 @@ namespace QuanLyQuanCafe.DAO
         
         public bool Login(string UserName, string PassWord)
         {
+            byte[] temp = ASCIIEncoding.ASCII.GetBytes(PassWord);
+            byte[] hasData = new MD5CryptoServiceProvider().ComputeHash(temp);
+            string hasPass = "";
+
+            foreach (byte item in hasData)
+            {
+                hasPass += item;
+            }
+
+            //var list = hasData.ToString();
+            //list.Reverse();
+
+
             string query = "USP_Login @UserName , @PassWord";
 
-            DataTable result = DataProvider.Instance.ExecuteQuery(query, new object[]{UserName,PassWord});
+            DataTable result = DataProvider.Instance.ExecuteQuery(query, new object[]{UserName, hasPass});
+
             return result.Rows.Count > 0;
         }
 
@@ -54,7 +69,7 @@ namespace QuanLyQuanCafe.DAO
 
         public bool InsertAccount(string name, string displayName, int type)
         {
-            string query = string.Format("INSERT INTO Account (UserName, DisplayName, Type) VALUES (N'{0}' , N'{1}' , {2})", name, displayName, type);
+            string query = string.Format("INSERT INTO Account (UserName, DisplayName, Type, PassWord) VALUES (N'{0}' , N'{1}' , {2} , N'{3}')", name, displayName, type, "1962026656160185351301320480154111117132155");
             int result = DataProvider.Instance.ExecuteNonQuery(query);
             return result > 0;
         }
@@ -75,7 +90,7 @@ namespace QuanLyQuanCafe.DAO
 
         public bool ResetPassword(string name)
         {
-            string query = string.Format("update account set PassWord = N'0' where UserName = N'{0}'", name);
+            string query = string.Format("update account set PassWord = N'1962026656160185351301320480154111117132155' where UserName = N'{0}'", name);
             int result = DataProvider.Instance.ExecuteNonQuery(query);
             return result > 0;
         }
