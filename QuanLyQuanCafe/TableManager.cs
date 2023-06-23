@@ -283,6 +283,16 @@ namespace QuanLyQuanCafe
             this.Close();
         }
 
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            buttonAddFood_Click(this, new EventArgs());
+        }
+
+        private void toolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            buttonCheckOut_Click(this, new EventArgs());
+        }
+
        
 
     }
