@@ -357,6 +357,55 @@ namespace QuanLyQuanCafe
             ResetPass(userName);
         }
 
+        private void btnFirstPageBill_Click(object sender, EventArgs e)
+        {
+            txbPageBill.Text = "1";
+        }
+
+        private void btnLastPageBill_Click(object sender, EventArgs e)
+        {
+            int sumRecord = BillDAO.Instance.GetNumBillListByDate(dateTimePickerFromDate.Value, dateTimePickerDateAfter.Value);
+
+            int lastPage = sumRecord / 10;
+            if(sumRecord%10 != 0)
+            {
+                lastPage++;
+            }
+            txbPageBill.Text = lastPage.ToString();
+        }
+
+        private void txbPageBill_TextChanged(object sender, EventArgs e)
+        {
+            dataGridViewBill.DataSource = BillDAO.Instance.GetBillListByDateAndPage(dateTimePickerFromDate.Value, dateTimePickerFromDate.Value, Convert.ToInt32(txbPageBill.Text));
+        }
+
+        private void btnPrevioursPageBill_Click(object sender, EventArgs e)
+        {
+            int page = Convert.ToInt32(txbPageBill.Text);
+            if (page > 1)
+                page--;
+            txbPageBill.Text = page.ToString();
+        }
+
+        private void btnNextPageBill_Click(object sender, EventArgs e)
+        {
+            int page = Convert.ToInt32(txbPageBill.Text);
+            int sumRecord = BillDAO.Instance.GetNumBillListByDate(dateTimePickerFromDate.Value, dateTimePickerDateAfter.Value);
+            int lastPage = sumRecord / 10;
+            if (sumRecord % 10 != 0)
+            {
+                lastPage++;
+            }
+            if (page < lastPage)
+                page++;
+            txbPageBill.Text = page.ToString();
+        }
+
+        private void dataGridViewBill_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
   
        
         

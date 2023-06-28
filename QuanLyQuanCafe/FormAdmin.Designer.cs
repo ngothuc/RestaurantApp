@@ -32,6 +32,7 @@
             this.panel21 = new System.Windows.Forms.Panel();
             this.buttonResetPassword = new System.Windows.Forms.Button();
             this.panel25 = new System.Windows.Forms.Panel();
+            this.numericUpDownType = new System.Windows.Forms.NumericUpDown();
             this.labelType = new System.Windows.Forms.Label();
             this.panel26 = new System.Windows.Forms.Panel();
             this.textBoxDisplayName = new System.Windows.Forms.TextBox();
@@ -114,10 +115,15 @@
             this.dateTimePickerDateAfter = new System.Windows.Forms.DateTimePicker();
             this.dateTimePickerFromDate = new System.Windows.Forms.DateTimePicker();
             this.tabControlAdmin = new System.Windows.Forms.TabControl();
-            this.numericUpDownType = new System.Windows.Forms.NumericUpDown();
+            this.btnFirstPageBill = new System.Windows.Forms.Button();
+            this.btnLastPageBill = new System.Windows.Forms.Button();
+            this.btnPrevioursPageBill = new System.Windows.Forms.Button();
+            this.btnNextPageBill = new System.Windows.Forms.Button();
+            this.txbPageBill = new System.Windows.Forms.TextBox();
             this.tabPageAccount.SuspendLayout();
             this.panel21.SuspendLayout();
             this.panel25.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownType)).BeginInit();
             this.panel26.SuspendLayout();
             this.panel27.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAccount)).BeginInit();
@@ -153,7 +159,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBill)).BeginInit();
             this.panel1.SuspendLayout();
             this.tabControlAdmin.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownType)).BeginInit();
             this.SuspendLayout();
             // 
             // tabPageAccount
@@ -197,6 +202,18 @@
             this.panel25.Name = "panel25";
             this.panel25.Size = new System.Drawing.Size(510, 75);
             this.panel25.TabIndex = 3;
+            // 
+            // numericUpDownType
+            // 
+            this.numericUpDownType.Location = new System.Drawing.Point(191, 20);
+            this.numericUpDownType.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDownType.Name = "numericUpDownType";
+            this.numericUpDownType.Size = new System.Drawing.Size(78, 22);
+            this.numericUpDownType.TabIndex = 1;
             // 
             // labelType
             // 
@@ -918,6 +935,11 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.txbPageBill);
+            this.panel2.Controls.Add(this.btnNextPageBill);
+            this.panel2.Controls.Add(this.btnPrevioursPageBill);
+            this.panel2.Controls.Add(this.btnLastPageBill);
+            this.panel2.Controls.Add(this.btnFirstPageBill);
             this.panel2.Controls.Add(this.dataGridViewBill);
             this.panel2.Location = new System.Drawing.Point(2, 34);
             this.panel2.Name = "panel2";
@@ -931,8 +953,9 @@
             this.dataGridViewBill.Location = new System.Drawing.Point(3, 10);
             this.dataGridViewBill.Name = "dataGridViewBill";
             this.dataGridViewBill.RowTemplate.Height = 24;
-            this.dataGridViewBill.Size = new System.Drawing.Size(1068, 579);
+            this.dataGridViewBill.Size = new System.Drawing.Size(1068, 538);
             this.dataGridViewBill.TabIndex = 0;
+            this.dataGridViewBill.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewBill_CellContentClick);
             // 
             // panel1
             // 
@@ -983,17 +1006,56 @@
             this.tabControlAdmin.TabIndex = 0;
             this.tabControlAdmin.SelectedIndexChanged += new System.EventHandler(this.tabControlAdmin_SelectedIndexChanged);
             // 
-            // numericUpDownType
+            // btnFirstPageBill
             // 
-            this.numericUpDownType.Location = new System.Drawing.Point(191, 20);
-            this.numericUpDownType.Maximum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDownType.Name = "numericUpDownType";
-            this.numericUpDownType.Size = new System.Drawing.Size(78, 22);
-            this.numericUpDownType.TabIndex = 1;
+            this.btnFirstPageBill.Location = new System.Drawing.Point(0, 557);
+            this.btnFirstPageBill.Name = "btnFirstPageBill";
+            this.btnFirstPageBill.Size = new System.Drawing.Size(106, 32);
+            this.btnFirstPageBill.TabIndex = 1;
+            this.btnFirstPageBill.Text = "Trang Đầu";
+            this.btnFirstPageBill.UseVisualStyleBackColor = true;
+            this.btnFirstPageBill.Click += new System.EventHandler(this.btnFirstPageBill_Click);
+            // 
+            // btnLastPageBill
+            // 
+            this.btnLastPageBill.Location = new System.Drawing.Point(956, 557);
+            this.btnLastPageBill.Name = "btnLastPageBill";
+            this.btnLastPageBill.Size = new System.Drawing.Size(115, 32);
+            this.btnLastPageBill.TabIndex = 2;
+            this.btnLastPageBill.Text = "Trang Cuối";
+            this.btnLastPageBill.UseVisualStyleBackColor = true;
+            this.btnLastPageBill.Click += new System.EventHandler(this.btnLastPageBill_Click);
+            // 
+            // btnPrevioursPageBill
+            // 
+            this.btnPrevioursPageBill.Location = new System.Drawing.Point(129, 557);
+            this.btnPrevioursPageBill.Name = "btnPrevioursPageBill";
+            this.btnPrevioursPageBill.Size = new System.Drawing.Size(107, 32);
+            this.btnPrevioursPageBill.TabIndex = 3;
+            this.btnPrevioursPageBill.Text = "Trang Trước";
+            this.btnPrevioursPageBill.UseVisualStyleBackColor = true;
+            this.btnPrevioursPageBill.Click += new System.EventHandler(this.btnPrevioursPageBill_Click);
+            // 
+            // btnNextPageBill
+            // 
+            this.btnNextPageBill.Location = new System.Drawing.Point(830, 557);
+            this.btnNextPageBill.Name = "btnNextPageBill";
+            this.btnNextPageBill.Size = new System.Drawing.Size(108, 32);
+            this.btnNextPageBill.TabIndex = 4;
+            this.btnNextPageBill.Text = "Trang Sau";
+            this.btnNextPageBill.UseVisualStyleBackColor = true;
+            this.btnNextPageBill.Click += new System.EventHandler(this.btnNextPageBill_Click);
+            // 
+            // txbPageBill
+            // 
+            this.txbPageBill.Location = new System.Drawing.Point(485, 562);
+            this.txbPageBill.Name = "txbPageBill";
+            this.txbPageBill.ReadOnly = true;
+            this.txbPageBill.Size = new System.Drawing.Size(92, 22);
+            this.txbPageBill.TabIndex = 5;
+            this.txbPageBill.Text = "1";
+            this.txbPageBill.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txbPageBill.TextChanged += new System.EventHandler(this.txbPageBill_TextChanged);
             // 
             // FormAdmin
             // 
@@ -1009,6 +1071,7 @@
             this.panel21.ResumeLayout(false);
             this.panel25.ResumeLayout(false);
             this.panel25.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownType)).EndInit();
             this.panel26.ResumeLayout(false);
             this.panel26.PerformLayout();
             this.panel27.ResumeLayout(false);
@@ -1055,10 +1118,10 @@
             this.panel3.ResumeLayout(false);
             this.tabPageBill.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBill)).EndInit();
             this.panel1.ResumeLayout(false);
             this.tabControlAdmin.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownType)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1152,6 +1215,11 @@
         private System.Windows.Forms.Button buttonDeleteAccount;
         private System.Windows.Forms.Button buttonAddAccount;
         private System.Windows.Forms.NumericUpDown numericUpDownType;
+        private System.Windows.Forms.TextBox txbPageBill;
+        private System.Windows.Forms.Button btnNextPageBill;
+        private System.Windows.Forms.Button btnPrevioursPageBill;
+        private System.Windows.Forms.Button btnLastPageBill;
+        private System.Windows.Forms.Button btnFirstPageBill;
 
     }
 }
