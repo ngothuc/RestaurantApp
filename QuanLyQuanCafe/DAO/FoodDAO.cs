@@ -21,6 +21,11 @@ namespace QuanLyQuanCafe.DAO
 
         private FoodDAO() { }
 
+        public void DeleteFoodByCategoryID(int id)
+        {
+            DataProvider.Instance.ExecuteQuery("delete from food where IDCategory = " + id);
+        }
+
         public List<Food> GetFoodByCategoryID(int id)
         {
             List<Food> list = new List<Food>();

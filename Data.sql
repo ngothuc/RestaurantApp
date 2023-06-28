@@ -518,3 +518,70 @@ end
 go
 
 exec USP_GetListBillByDateAndPage @checkIn ='20230628' , @checkOut='20230628' , @page = 1
+
+select * from FoodCategory
+
+insert into FoodCategory values (N'Trà')
+update FoodCategory set Name = N'' where id =
+delete from food where IDCategory = 12
+
+select * from TableFood
+
+insert into TableFood(Name) values (N'VoDoi')
+
+delete from BillInfo where IDBill in (select ID from Bill where IDTable = 33)
+
+select * from Bill
+
+update TableFood set name = 'Celica' where ID = 1
+
+exec USP_GetListBillByDateAndPage @checkIn='20230628' , @checkOut='20230628' , @page=4
+
+select * from Account
+
+create proc USP_UpdateAccount
+@userName nvarchar(100), @displayName nvarchar(100), @password nvarchar(100), @newPassword nvarchar(100)
+as
+begin
+	declare @isRightPass int = 0
+
+	select @isRightPass = count(*) from Account where UserName = @userName and PassWord = @password
+
+	if (@isRightPass = 1)
+	begin
+		if (@newPassword = null or @newPassword = ' ')
+		begin
+			update Account set DisplayName = @displayName where UserName = @userName
+		end
+		else
+			update Account set DisplayName = @displayName, PassWord = @newPassword where UserName = @userName
+
+	end
+end
+go
+select * from Food
+
+INSERT INTO Food (Name, IDCategory, Price) VALUES (N'Mực một nắng nướng sa tế', 1, 120000);
+
+update food set Name = N'', IDCategory = 5, Price = 0 where ID = 4
+
+create proc USP_UpdateAccountPassWord
+@userName nvarchar(100), @displayName nvarchar(100), @password nvarchar(100), @newPassword nvarchar(100)
+as
+begin
+	declare @isRightPass int = 0
+
+	select @isRightPass = count(*) from Account where UserName = @userName and PassWord = @password
+
+	if (@isRightPass = 1)
+	begin
+		if (@newPassword = null or @newPassword = ' ')
+		begin
+			update Account set DisplayName = @displayName where UserName = @userName
+		end
+		else
+			update Account set DisplayName = @displayName, PassWord = @newPassword where UserName = @userName
+
+	end
+end
+go

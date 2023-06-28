@@ -40,6 +40,12 @@ namespace QuanLyQuanCafe.DAO
             return -1;
         }
 
+        public void DeleteBillByTableID(int id)
+        {
+            DataProvider.Instance.ExecuteQuery(string.Format("delete from BillInfo where IDBill in (select ID from Bill where IDTable = {0})", id));
+            DataProvider.Instance.ExecuteQuery(string.Format("delete from bill where IDTable = {0}", id));
+        }
+
         public void CheckOut(int id, int discount, float totalPrice)
         {
             string query = "update Bill set DateCheckOut = GETDATE(), Status = 1, " + "discount = " + discount + ", TotalPrice = " + totalPrice*1000 + " where ID = " + id;

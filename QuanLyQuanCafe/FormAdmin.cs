@@ -17,6 +17,8 @@ namespace QuanLyQuanCafe
     {
         BindingSource foodList = new BindingSource();
         BindingSource accountList = new BindingSource();
+        BindingSource foodcategoryList = new BindingSource();
+        BindingSource tableList = new BindingSource();
 
         public Account loginAccount;
 
@@ -26,13 +28,19 @@ namespace QuanLyQuanCafe
             //LoadAccountList();
             dataGridViewFood.DataSource = foodList;
             dataGridViewAccount.DataSource = accountList;
+            dataGridViewCategory.DataSource = foodcategoryList;
+            dataGridViewTable.DataSource = tableList;
             LoadDateTimePickerBill();
             LoadListBillByDate(dateTimePickerFromDate.Value, dateTimePickerDateAfter.Value);
             LoadListFood();
             LoadAccount();
+            LoadCategory();
+            LoadTable();
             LoadCategoryIntoComboBox(comboBoxCategory);
             AddFoodBinding();
             AddAccountBinding();
+            AddCategoryBinding();
+            AddTableBinding();
         }
 
 
@@ -67,13 +75,32 @@ namespace QuanLyQuanCafe
             
             return listFood;
         }
+        void AddTableBinding()
+        {
+            textBoxTableID.DataBindings.Add(new Binding("Text", dataGridViewTable.DataSource, "ID"));
+            textBoxTableName.DataBindings.Add(new Binding("Text", dataGridViewTable.DataSource, "Name"));
+            textBoxTableStatus.DataBindings.Add(new Binding("Text", dataGridViewTable.DataSource, "status"));
+        }
 
+        void AddCategoryBinding()
+        {
+            textBoxIDCategory.DataBindings.Add(new Binding("Text", dataGridViewCategory.DataSource, "ID"));
+            textBoxCategoryName.DataBindings.Add(new Binding("Text", dataGridViewCategory.DataSource, "Name"));
+        }
 
         void AddAccountBinding()
         {
             textBoxUserName.DataBindings.Add(new Binding("Text", dataGridViewAccount.DataSource, "UserName", true, DataSourceUpdateMode.Never));
             textBoxDisplayName.DataBindings.Add(new Binding("Text", dataGridViewAccount.DataSource, "DisplayName", true, DataSourceUpdateMode.Never));
             numericUpDownType.DataBindings.Add(new Binding("Value", dataGridViewAccount.DataSource, "Type", true, DataSourceUpdateMode.Never));
+        }
+        void LoadTable()
+        {
+            tableList.DataSource = TableDAO.Instance.GetListTable();
+        }
+        void LoadCategory()
+        {
+            foodcategoryList.DataSource = CategoryDAO.Instance.GetCategoryList();
         }
         void LoadAccount()
         {
@@ -293,6 +320,10 @@ namespace QuanLyQuanCafe
 
             catch { }
         }
+        private void buttonViewCategory_Click(object sender, EventArgs e)
+        {
+            LoadCategory();
+        }
 
         private void buttonAddFood_Click(object sender, EventArgs e)
         {
@@ -357,54 +388,116 @@ namespace QuanLyQuanCafe
             ResetPass(userName);
         }
 
-        private void btnFirstPageBill_Click(object sender, EventArgs e)
-        {
-            txbPageBill.Text = "1";
-        }
+        
+       
+       
 
-        private void btnLastPageBill_Click(object sender, EventArgs e)
-        {
-            int sumRecord = BillDAO.Instance.GetNumBillListByDate(dateTimePickerFromDate.Value, dateTimePickerDateAfter.Value);
-
-            int lastPage = sumRecord / 10;
-            if(sumRecord%10 != 0)
-            {
-                lastPage++;
-            }
-            txbPageBill.Text = lastPage.ToString();
-        }
-
-        private void txbPageBill_TextChanged(object sender, EventArgs e)
-        {
-            dataGridViewBill.DataSource = BillDAO.Instance.GetBillListByDateAndPage(dateTimePickerFromDate.Value, dateTimePickerFromDate.Value, Convert.ToInt32(txbPageBill.Text));
-        }
-
-        private void btnPrevioursPageBill_Click(object sender, EventArgs e)
-        {
-            int page = Convert.ToInt32(txbPageBill.Text);
-            if (page > 1)
-                page--;
-            txbPageBill.Text = page.ToString();
-        }
-
-        private void btnNextPageBill_Click(object sender, EventArgs e)
-        {
-            int page = Convert.ToInt32(txbPageBill.Text);
-            int sumRecord = BillDAO.Instance.GetNumBillListByDate(dateTimePickerFromDate.Value, dateTimePickerDateAfter.Value);
-            int lastPage = sumRecord / 10;
-            if (sumRecord % 10 != 0)
-            {
-                lastPage++;
-            }
-            if (page < lastPage)
-                page++;
-            txbPageBill.Text = page.ToString();
-        }
+       
 
         private void dataGridViewBill_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
+
+        private void buttonAddCategory_Click(object sender, EventArgs e)
+        {
+            string name = textBoxCategoryName.Text;
+            if(CategoryDAO.Instance.InsertCategory(name))
+            {
+                MessageBox.Show("Thêm danh mục thành công");
+                LoadCategory();
+            }
+            else
+            {
+                MessageBox.Show("Có lỗi khi thêm danh mục");
+            }
+        }
+
+        private void buttonEditCategory_Click(object sender, EventArgs e)
+        {
+            string name = textBoxCategoryName.Text;
+            int id = Convert.ToInt32(textBoxIDCategory.Text);
+            if(CategoryDAO.Instance.UpdateCategory(name, id))
+            {
+                MessageBox.Show("Sửa danh mục thành công");
+                LoadCategory();
+            }
+            else
+            {
+                MessageBox.Show("Có lỗi trong quá trình sửa danh mục");
+            }
+        }
+
+        private void buttonDeleteCategory_Click(object sender, EventArgs e)
+        {
+            int id = Convert.ToInt32(textBoxIDCategory.Text);
+
+            if(CategoryDAO.Instance.DeleteCategory(id))
+            {
+                MessageBox.Show("Xóa danh mục thành công");
+                LoadCategory();
+            }
+            else
+            {
+                MessageBox.Show("Có lỗi khi xóa danh mục");
+            }
+        }
+
+        private void buttonViewTable_Click(object sender, EventArgs e)
+        {
+            LoadTable();
+        }
+
+        private void buttonAddTable_Click(object sender, EventArgs e)
+        {
+            string name = textBoxTableName.Text;
+            if(TableDAO.Instance.InsertTable(name))
+            {
+                MessageBox.Show("Thêm bàn thành công");
+                LoadTable();
+            }
+            else
+            {
+                MessageBox.Show("Có lỗi khi thêm bàn");
+            }
+        }
+
+        private void buttonDeleteTable_Click(object sender, EventArgs e)
+        {
+            int id = Convert.ToInt32(textBoxTableID.Text);
+            if(TableDAO.Instance.DeleteTable(id))
+            {
+                MessageBox.Show("Xóa bàn thành công");
+                LoadTable();
+            }
+            else
+            {
+                MessageBox.Show("Có lỗi khi xóa bàn");
+            }
+        }
+
+        private void buttonEditTable_Click(object sender, EventArgs e)
+        {
+            string name = textBoxTableName.Text;
+            int id = Convert.ToInt32(textBoxTableID.Text);
+            if(TableDAO.Instance.UpdateTable(name, id))
+            {
+                MessageBox.Show("Sửa bàn thành công");
+                LoadTable();
+            }
+            else
+            {
+                MessageBox.Show("Có lỗi khi sửa bàn");
+            }
+        }
+
+        private void dateTimePickerFromDate_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+
+       
 
   
        

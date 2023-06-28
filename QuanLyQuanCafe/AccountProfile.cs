@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -45,11 +46,32 @@ namespace QuanLyQuanCafe
 
         void UpdateAccountInfo()
         {
+            byte[] temp = ASCIIEncoding.ASCII.GetBytes(textBoxPassWord.Text);
+            byte[] hasData = new MD5CryptoServiceProvider().ComputeHash(temp);
+            string password = "";
+
+            foreach (byte item in hasData)
+            {
+                password += item;
+            }
             string displayName = textBoxDisplayName.Text;
-            string password = textBoxPassWord.Text;
-            string newpass = textBoxNewPassword.Text;
-            string reenterPass = textBoxReEnterNewPW.Text;
+            string newpass = "";
+            string reenterPass = "";
             string userName = textBoxUserName.Text;
+
+            byte[] tmp = ASCIIEncoding.ASCII.GetBytes(textBoxNewPassword.Text);
+            byte[] has_tmp = new MD5CryptoServiceProvider().ComputeHash(tmp);
+            foreach (byte item in has_tmp)
+            {
+                newpass += item;
+            }
+
+            byte[] retmp = ASCIIEncoding.ASCII.GetBytes(textBoxReEnterNewPW.Text);
+            byte[] has_retmp = new MD5CryptoServiceProvider().ComputeHash(retmp);
+            foreach (byte item in has_retmp)
+            {
+                reenterPass += item;
+            }
 
             if(!newpass.Equals(reenterPass))
             {
@@ -57,7 +79,7 @@ namespace QuanLyQuanCafe
             }
             else
             {
-                if (AccountDAO.Instance.UpdateAccount(userName, displayName, password, newpass))
+                if (AccountDAO.Instance.UpdateAccountPassWord(userName, displayName, password, newpass))
                 {
                     MessageBox.Show("Cập nhật thành công");
                     if (updateAccount != null)

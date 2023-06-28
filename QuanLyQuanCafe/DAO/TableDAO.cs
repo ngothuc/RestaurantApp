@@ -42,5 +42,32 @@ namespace QuanLyQuanCafe.DAO
 
             return tableList;
         }
+        public DataTable GetListTable()
+        {
+            return DataProvider.Instance.ExecuteQuery("Select * from TableFood");
+        }
+
+        public bool InsertTable(string name)
+        {
+            string query = string.Format("insert into TableFood(Name) values (N'{0}')", name);
+            int result = DataProvider.Instance.ExecuteNonQuery(query);
+            return result > 0;
+        }
+
+        public bool UpdateTable(string name, int id)
+        {
+            string query = string.Format("update TableFood set name = N'{0}' where ID = {1}", name, id);
+            int result = DataProvider.Instance.ExecuteNonQuery(query);
+            return result > 0;
+        }
+
+        public bool DeleteTable(int id)
+        {
+
+            BillDAO.Instance.DeleteBillByTableID(id);
+            string query = string.Format("delete from TableFood where id = " + id);
+            int result = DataProvider.Instance.ExecuteNonQuery(query);
+            return result > 0;
+        }
     }
 }
